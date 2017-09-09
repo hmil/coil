@@ -1,0 +1,52 @@
+{
+    "name": "coil",
+    "productName": "coil",
+    "version": "0.0.0",
+    "description": "My Electron application description",
+    "main": "dist/electron-main.js",
+    "scripts": {
+        "start": "electron .",
+        "prod": "node ./scripts/run-prod.sh.js",
+        "dev": "node ./scripts/run-dev.sh.js",
+        "build": "node ./scripts/dist.sh.js",
+        "lint": "node ./scripts/lint.sh.js",
+        "clean": "node ./scripts/clean.sh.js"
+    },
+    "keywords": [],
+    "author": "hmil <https://github.com/hmil>",
+    "license": "MIT",
+    "dependencies": {
+        "electron-devtools-installer": "^2.2.0",
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1",
+        "tslib": "^1.7.1"
+    },
+    "devDependencies": {
+        "@types/electron-devtools-installer": "^2.0.2",
+        "@types/react": "^16.0.5",
+        "@types/react-dom": "^15.5.4",
+        "@types/webpack-env": "^1.13.1",
+        "css-loader": "^0.28.7",
+        "cz-conventional-changelog": "^2.0.0",
+        "electron": "^1.7.6",
+        "eslint": "^4.6.1",
+        "fork-ts-checker-webpack-plugin": "^0.2.8",
+        "less": "^2.7.2",
+        "less-loader": "^4.0.5",
+        "shelljs": "^0.7.8",
+        "style-loader": "^0.18.2",
+        "ts-loader": "^2.3.6",
+        "tslint": "^5.7.0",
+        "typed-css-modules": "^0.3.0",
+        "typescript": "^2.2.2",
+        "typings-for-css-modules-loader": "^1.5.0",
+        "webpack": "^3.5.6",
+        "webpack-dev-server": "^2.7.1",
+        "webpack-node-externals": "^1.6.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
+}

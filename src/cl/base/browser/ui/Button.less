@@ -1,0 +1,18 @@
+
+@color: #F71F61;
+
+.Btn {
+    composes: Widgets from './Style';
+    border-color: @color;
+}
+
+.Danger {
+    composes: Btn;
+    background: #ccc;
+}
+
+.Success {
+    composes: Btn;
+    background: darken(@color, 20%);
+}
+
