@@ -1,0 +1,12 @@
+@import 'cl/style/variables';
+@import 'cl/style/Focusable';
+
+.ToDoItemStyle {
+    .Focusable;
+    border: 1px @background-deep solid;
+    padding: 2px;
+    &.Checked {
+        background-color: @primary;
+        color: @foreground-inverse;
+    }
+}

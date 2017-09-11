@@ -1,29 +1,37 @@
 import * as React from 'react';
-import { Danger, Success } from './Button.less';
 
-export type ButtonType = 'primary' | 'default';
+import { ButtonActive, ButtonStyle } from './Button.less';
 
 export interface IButtonProps {
-    type?: ButtonType;
-    text?: string;
-    state?: boolean;
-    onclick?: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+    active?: boolean;
+    onClick?: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+    focusable?: boolean;
 }
 
 export class Button extends React.Component<IButtonProps, {}> {
 
-    private handleClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
-        const handler = this.props.onclick;
-        if (handler) {
-            handler(evt);
+    private get className(): string {
+        return [
+            ButtonStyle,
+            this.props.active ? ButtonActive : ''
+        ].join(' ');
+    }
+
+    private get children(): React.ReactNode {
+        if (this.props.children == null || this.props.children['length'] != undefined && this.props.children['length'] === 0) {
+            return '\u00A0';
+        } else {
+            return this.props.children;
         }
     }
 
-    private get className() {
-        return this.props.state ? Success : Danger;
+    private get isFocusable(): boolean {
+        return this.props.focusable == null || this.props.focusable;
     }
 
     public render() {
-        return <button type='button' className={this.className} onClick={this.handleClick}>{this.props.text}</button>;
+        return <button tabIndex={this.isFocusable ? 0 : -1} type='button' className={this.className} onClick={this.props.onClick}>
+            {this.children}
+        </button>;
     }
 }

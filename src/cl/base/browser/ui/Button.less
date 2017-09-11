@@ -1,18 +1,28 @@
+@import 'cl/style/variables';
+@import 'cl/style/Widget';
 
-@color: #F71F61;
+.ButtonStyle {
+    .Widget;
+    .Focusable;
+    display: block;
+    padding: 1px 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 10px;
+    cursor: inherit;
 
-.Btn {
-    composes: Widgets from './Style';
-    border-color: @color;
+    &:hover {
+        background-color: @background-shallow-outline;
+        color: @foreground-accent;
+    }
+
+    &.ButtonActive {
+        background-color: @primary;
+        color: @foreground-inverse;
+
+        &:hover {
+            background-color: @primary-h;
+        }
+    }
 }
-
-.Danger {
-    composes: Btn;
-    background: #ccc;
-}
-
-.Success {
-    composes: Btn;
-    background: darken(@color, 20%);
-}
-

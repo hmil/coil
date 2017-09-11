@@ -1,5 +1,5 @@
 const { exec, env, set } = require('shelljs');
-const { SRC_DIR, SCRIPTS_DIR } = require('./constants');
+const { SCRIPTS_DIR } = require('./constants');
 
 // Abort script on error
 set('-e');

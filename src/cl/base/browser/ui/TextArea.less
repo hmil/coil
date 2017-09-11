@@ -1,0 +1,17 @@
+@import 'cl/style/variables';
+@import 'cl/style/Widget';
+
+.TextAreaStyle {
+    .Widget;
+    background-color: @background-shallow;
+    max-width: 100%;
+
+    &:focus {
+        background-color: @background-main;
+        color: @foreground-accent;
+    }
+
+    &::placeholder {
+        color: @foreground-dim;
+    }
+}

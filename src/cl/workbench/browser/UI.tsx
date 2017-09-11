@@ -1,16 +1,9 @@
+import { Workbench } from 'cl/workbench/browser/Workbench';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Workbench } from 'cl/workbench/browser/Workbench';
+import { Provider } from 'react-redux';
 
-/*
- * This module is hot-reloadable. It may be executed multiple times
- * during the lifetime of the app in development and therefore it should
- * either be stateless or provide an easy way to migrate its state in between
- * hot reloads.
- */
-if (module.hot) {
-    module.hot.accept();
-}
+import { workbenchStore } from '../common/WorkbenchStore';
 
 const rootEl = document.getElementById('app');
 if (!rootEl) {
@@ -22,6 +15,21 @@ if (!rootEl) {
  * and will only replace the DOM that has changed.
  */
 ReactDOM.render(
-    <Workbench></Workbench>
+    <Provider store={workbenchStore}>
+        <Workbench></Workbench>
+    </Provider>
     , rootEl
 );
+
+/*
+ * This module is hot-reloadable. It may be executed multiple times
+ * during the lifetime of the app in development and therefore it should
+ * either be stateless or provide an easy way to migrate its state in between
+ * hot reloads.
+ */
+if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => {
+        ReactDOM.unmountComponentAtNode(rootEl);
+    });
+}

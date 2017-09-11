@@ -4,16 +4,19 @@
         "curly": true,
         "eofline": false,
         "align": [true, "parameters"],
-        "class-name": true,
-        "indent": [true, "spaces"],
         "interface-name": true,
+        "class-name": true,
+        "variable-name": [
+            "allow-leading-underscore",
+            "allow-pascal-case",
+            true
+        ],
+        "indent": [true, "spaces"],
         "jsdoc-format": true,
         "max-line-length": [true, 150],
         "member-access": [
             "check-accessor"
         ],
-        "new-parens": true,
-        "newline-before-return": true,
         "no-consecutive-blank-lines": [true],
         "no-duplicate-variable": true,
         "no-var-keyword": true,
@@ -44,6 +47,7 @@
             "check-decl",
             "check-operator",
             "check-separator",
-            "check-type"]
+            "check-type"],
+        "ordered-imports": true
     }
 }

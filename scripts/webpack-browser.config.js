@@ -93,7 +93,15 @@ module.exports = {
                         less: true
                     }
                 },
-                'less-loader', 
+                {
+                    loader: 'less-loader', 
+                    options: {
+                        paths: [
+                            path.resolve(REPO_ROOT, 'node_modules'),
+                            path.resolve(REPO_ROOT, 'src'),
+                        ]
+                    }
+                }
             ]
         }]
     },
