@@ -1,12 +1,12 @@
 import { Button } from 'cl/base/browser/ui/Button';
 import { FlexItem, FlexLayout } from 'cl/base/browser/ui/FlexLayout';
-import { ITodoItem } from 'cl/workbench/common/IWorkbenchState';
+import { TodoItem } from 'cl/workbench/common/IWorkbenchState';
 import * as React from 'react';
 
 import { Checked, ToDoItemStyle } from './ToDoItem.less';
 
 export interface IToDoItemProps {
-    todo: ITodoItem;
+    todo: TodoItem;
     onToggleCheck: () => void;
     onDelete: () => void;
 }

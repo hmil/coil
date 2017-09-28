@@ -1,0 +1,9 @@
+TODO
+
+- [x] Streamline action namespace API
+- [x] Comment action namespace API
+- [x] hunt '..' imports
+- [ ] Verify dependence between top-level dirs
+  - [ ] Move AppState to platform ?
+  - [ ] IoC between AudioEngine and App
+- [ ] hunt TODOs

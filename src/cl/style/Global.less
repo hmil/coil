@@ -1,0 +1,16 @@
+@import 'cl/style/variables';
+@import 'cl/style/Focusable';
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+a {
+    .Focusable;
+    color: @secondary;
+}

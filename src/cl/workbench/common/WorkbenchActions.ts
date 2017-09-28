@@ -1,8 +1,8 @@
-import * as uuid from 'uuid/v1';
-
-import { ActionFactory } from 'cl/utils/common/redux/Action';
+import { ActionFactory } from 'cl/base/common/redux/Action';
+import * as uuid from 'uuid/v4';
 
 export class UpdatePendingToDoTextAction extends ActionFactory<string> {
+
     static create(text: string) {
         return this._create({
             payload: text

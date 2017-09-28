@@ -1,9 +1,9 @@
 import { Button } from 'cl/base/browser/ui/Button';
 import { FlexItem, FlexLayout } from 'cl/base/browser/ui/FlexLayout';
 import { TextArea } from 'cl/base/browser/ui/TextArea';
-import { foreach } from 'cl/utils/browser/jsx-helpers';
-import { IWorkbenchState } from 'cl/workbench/common/IWorkbenchState';
-import { ITodoItem } from 'cl/workbench/common/IWorkbenchState';
+import { foreach } from 'cl/base/browser/utils/jsx-helpers';
+import { AppState } from 'cl/coil/redux/AppState';
+import { TodoItem } from 'cl/workbench/common/IWorkbenchState';
 import {
     CheckToDoAction,
     CreateToDoAction,
@@ -15,6 +15,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as Redux from 'redux';
 
+import { SideBarActivityStyle } from '../SideBar.less';
 import { ToDoItem } from './ToDoItem';
 
 export interface IToDoActivityDispatchProps {
@@ -26,16 +27,16 @@ export interface IToDoActivityDispatchProps {
 }
 
 export interface IToDoActivityStateProps {
-    items: ITodoItem[];
+    items: TodoItem[];
     pendingTodo: string;
 }
 
 export const ToDoActivity = connect(
-    (state: IWorkbenchState): IToDoActivityStateProps => ({
-        items: state.todoItems.valueSeq().toArray(),
-        pendingTodo: state.pendingTodo.text
+    (state: AppState): IToDoActivityStateProps => ({
+        items: state.workbench.todoItems.valueSeq().toArray(),
+        pendingTodo: state.workbench.pendingTodo.text
     }),
-    (dispatch: Redux.Dispatch<IWorkbenchState>): IToDoActivityDispatchProps => ({
+    (dispatch: Redux.Dispatch<AppState>): IToDoActivityDispatchProps => ({
         requestAddItem: () => dispatch(CreateToDoAction.create()),
         onTextChange: (text: string) => dispatch(UpdatePendingToDoTextAction.create(text)),
         requestItemCheck: (id: string) => dispatch(CheckToDoAction.create(id)),
@@ -44,7 +45,7 @@ export const ToDoActivity = connect(
     }))(
     class extends React.Component<IToDoActivityDispatchProps & IToDoActivityStateProps, {}> {
         public render() {
-            return <div>
+            return <div className={SideBarActivityStyle}>
                 <FlexLayout direction='column'>
                     <FlexItem>{ foreach(this.props.items, (item) => (
                         <ToDoItem

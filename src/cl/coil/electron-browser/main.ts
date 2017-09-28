@@ -1,10 +1,18 @@
-import * as UI from 'cl/workbench/browser/UI';
+import { UI, ui } from 'cl/workbench/browser/UI';
+
+import { appStore } from 'cl/coil/redux/AppStore';
 
 /* Browser entry point */
 
-/**
- * Load the UI. Because the UI is an HMR component, there is nothing
- * for us to do here other than require it.
- */
-// tslint:disable-next-line:no-unused-expression
-UI;
+function start(ui: UI) {
+    ui.mount(appStore);
+}
+
+start(ui);
+
+if (module.hot) {
+    module.hot.accept('cl/workbench/browser/UI', () => {
+          // tslint:disable-next-line:no-require-imports
+          start(require('cl/workbench/browser/UI').ui);
+    });
+}

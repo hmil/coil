@@ -23,5 +23,17 @@
     const React = require('react');
     const ReactDOM = require('react-dom');
 </script>
-<script src="./browser-main.js"></script>
+<script src="./browser-main.js" async></script>
+
+<script>
+    // Global fixes to un-browserify electron
+
+    // Prevents dropped file from triggering a browser navigation to that file.
+    document.addEventListener('drop', function(evt) {
+        evt.preventDefault();
+    });
+    document.addEventListener('dragover',function(evt){
+        evt.preventDefault();
+    });
+</script>
 </html>

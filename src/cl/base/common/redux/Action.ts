@@ -7,6 +7,7 @@ import * as Redux from 'redux';
  * However we still need to serialize the action in order to dispatch it, then we need a IStandardAction.
  */
 export interface IAction<T_PAYLOAD> {
+    namespace?: string;
     payload: T_PAYLOAD;
     error?: boolean;
 }

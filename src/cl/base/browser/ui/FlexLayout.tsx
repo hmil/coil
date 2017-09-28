@@ -47,6 +47,8 @@ interface IFlexLayoutProps {
     direction?: FlexDirection;
     alignItems?: AlignItems;
     flexWrap?: FlexWrap;
+    className?: string;
+    style?: React.CSSProperties;
 }
 
 export class FlexLayout extends React.Component<IFlexLayoutProps, {}> {
@@ -60,13 +62,15 @@ export class FlexLayout extends React.Component<IFlexLayoutProps, {}> {
                 alignItems: props.alignItems || 'stretch'
             };
 
-        return <div style={styles}>{this.props.children}</div>;
+        return <div className={this.props.className} style={{...styles, ...this.props.style}}>{this.props.children}</div>;
     }
 }
 
 interface IFlexItemProps {
     flexGrow?: number;
     flexShrink?: number;
+    className?: string;
+    style?: React.CSSProperties;
 }
 
 export class FlexItem extends React.Component<IFlexItemProps, {}> {
@@ -77,6 +81,6 @@ export class FlexItem extends React.Component<IFlexItemProps, {}> {
             flexShrink: (this.props.flexShrink == null) ? 1 : this.props.flexShrink,
             minWidth: 0
         };
-        return <div style={styles}>{this.props.children}</div>;
+        return <div style={{...styles, ...this.props.style}} className={this.props.className}>{this.props.children}</div>;
     }
 }
